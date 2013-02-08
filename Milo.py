@@ -65,7 +65,7 @@ def solve(test):
     people = line[0].split(",")
     products = line[1].split(",")
     
-    mat = defaultdict(lambda : [0] ) # dict where we would find the answer
+    mat = defaultdict(lambda : defaultdict(lambda:0) ) # dict where we would find the answer
     
   
     mat_prod = {}  # char to product name mapping
@@ -73,9 +73,8 @@ def solve(test):
     lowercase = string.ascii_letters
     
     for i in range(len(products)):
-       
-        mat[""].append(0)
         mat_prod[lowercase[i]] = products[i] 
+ 
         
     for i in range(0,len(products)):  
         for s in combinations( mat_prod.iterkeys() ,i +1):
@@ -86,13 +85,13 @@ def solve(test):
                 max = 0
                 
                 for k in s:
-                    temp = calculate_ss(mat_prod[k],people[j]) + mat[ s[:].replace(k,"") ] [j]
+                    temp = calculate_ss(mat_prod[k],people[j]) + mat[ s[:].replace(k,"") ][j]
                     if temp > max:
                         max = temp
                 
-                mat[s].append(max)
+                mat[s][j+1] = max
                 
-    print mat
+    print mat["abc"]
                 
                 
         
