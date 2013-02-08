@@ -91,7 +91,7 @@ def solve(test):
                 
                 mat[s][j+1] = max
                 
-    print mat["abc"]
+    print mat["a"]
                 
                 
         
